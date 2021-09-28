@@ -7,12 +7,19 @@ class MoviesController < ApplicationController
   end
 
   def index
-      if params[:sort] != "release_date"
-        @movies = Movie.order(params[:sort])
-      else if params[:sort] == "release_date"
-        @movies = Movie.all.sort_by{|movie| movie.release_date}
-      else
-        @movies = Movie.all
+    # title_sort symbol was placed in the params
+    if session[:sorting_mechanism] == "title"
+      @movies = @movies.sort! { |a,b| a.title <=> b.title }
+      @movie_highlight = "hilite"
+    elsif session[:sorting_mechanism] == "release_date"
+      @movies = @movies.sort! { |a,b| a.release_date <=> b.release_date }
+      @date_highlight = "hilite"
+    else
+      
+    end
+      
+      @movies = Movie.all
+      
   end
 
   def new
