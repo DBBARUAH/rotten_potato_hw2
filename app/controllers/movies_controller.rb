@@ -7,6 +7,7 @@ class MoviesController < ApplicationController
   end
 
   def index
+    @sort
     @movies = Movie.all
   end
 
