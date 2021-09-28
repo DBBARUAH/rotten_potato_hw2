@@ -1,4 +1,4 @@
-class MoviesController < ApplicationController
+  class MoviesController < ApplicationController
 
     def show
       id = params[:id] # retrieve movie ID from URI route
