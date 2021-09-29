@@ -14,8 +14,6 @@
       @all_ratings = Movie.ratings 
       @ratings = @all_ratings 
       @ratings =  params[:ratings].keys if params[:ratings] 
-   
-   
 
       @movies = Movie.where(rating: @ratings)
       @sort=params[:sort]
@@ -38,8 +36,7 @@
         return redirect_to movies_path(sort: params[:sort], ratings: session[:ratings])
       end
       
-      @sort = params[:sort]
-      @movies = Movie.all.order(@sort)
+      #@movies = Movie.where(rating: t_param.keys).order(@sort)
       
     end
   
